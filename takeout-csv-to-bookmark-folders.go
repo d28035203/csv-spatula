@@ -1,4 +1,4 @@
-// takeout-csv-to-bookmark-folders.go — potential-spoon.
+// takeout-csv-to-bookmark-folders.go — csv-spatula.
 // Author: d28035203
 
 package main

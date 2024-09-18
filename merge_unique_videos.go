@@ -1,4 +1,4 @@
-// merge_unique_videos.go — potential-spoon.
+// merge_unique_videos.go — csv-spatula.
 // Author: d28035203
 
 package main
