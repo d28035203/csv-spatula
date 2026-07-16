@@ -127,9 +127,10 @@ func processFile(filename string, seen map[string]videoEntry) (int, error) {
 }
 
 func writeMerged(path string, entries []videoEntry) error {
-	if err := os.MkdirAll(filepath.Dir(absDir(path)), 0o755); err != nil && filepath.Dir(path) != "." {
-		// best-effort; Create will still fail clearly
-		_ = err
+	if dir := filepath.Dir(path); dir != "." && dir != "" {
+		if err := os.MkdirAll(dir, 0o755); err != nil {
+			return err
+		}
 	}
 	f, err := os.Create(path)
 	if err != nil {
@@ -156,11 +157,4 @@ func first(ss []string) string {
 		return ""
 	}
 	return ss[0]
-}
-
-func absDir(path string) string {
-	if filepath.Dir(path) == "." {
-		return "."
-	}
-	return filepath.Dir(path)
 }
